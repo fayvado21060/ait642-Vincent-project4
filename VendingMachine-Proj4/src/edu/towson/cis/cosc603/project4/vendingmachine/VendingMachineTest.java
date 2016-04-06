@@ -55,7 +55,9 @@ public class VendingMachineTest {
 	 */	
 		
 	@Test (expected = VendingMachineException.class)
-	public void testAddItemException1(){
+//	@Test
+	public void testAddItemException1() throws VendingMachineException
+	{
 		 VendingMachine myVendingMachine2 = new VendingMachine(); 
 		 myVendingMachine2.addItem(myItem1, "A");
 		 myVendingMachine2.addItem(myItem2, "B");

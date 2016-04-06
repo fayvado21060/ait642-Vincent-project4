@@ -38,13 +38,15 @@ public class VendingMachineItemTest {
 	
 		
 	/**
-	 * Initializes the necessary test objects for the test caase to use
+	 * Initializes the necessary test objects for the test case to use
 	 */	
 	
 	@Before
 	public void setUp() throws Exception {
 		myVendingMachineItem1 = new VendingMachineItem ("Soda",.50);
 		myVendingMachineItem2 = new VendingMachineItem ("Soda",0.0);
+
+		
 	}
 		
 	/**
@@ -76,9 +78,12 @@ public class VendingMachineItemTest {
 	 * Price < 0
 	 */	
 	@Test (expected = VendingMachineException.class)
-	public void testVendingMachineException() {
-        myVendingMachineItem3 = new VendingMachineItem ("Soda",-10.0);
+	public void testVendingMachineException() throws VendingMachineException {
+        myVendingMachineItem3 = new VendingMachineItem("Soda",-10.0);        
 	}
+
+	
+	
 	/**
 	 * Cleans up test objects for the test case to use
 	 */	
