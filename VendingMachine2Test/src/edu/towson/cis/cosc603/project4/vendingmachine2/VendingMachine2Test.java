@@ -21,6 +21,11 @@ public class VendingMachine2Test {
 	 *
 	 * @generatedBy CodePro at 4/5/16 11:51 PM
 	 */
+	
+
+	
+	
+	
 	@Test
 	public void testVendingMachine2_1()
 		throws Exception {
@@ -110,6 +115,33 @@ public class VendingMachine2Test {
 		fixture.addItem(item, code);
 
 		// add additional test code here
+	}
+
+	@Test
+	public void testAddItem_4()
+		throws Exception {
+		VendingMachine2 vendingMachine2 = new VendingMachine2();
+		VendingMachineItem2 item = new VendingMachineItem2("",1.0);
+		String code = "B";
+		vendingMachine2.addItem(item, code);
+	}
+
+	@Test
+	public void testAddItem_5()
+		throws Exception {
+		VendingMachine2 vendingMachine2 = new VendingMachine2();
+		VendingMachineItem2 item = new VendingMachineItem2("",1.0);
+		String code = "C";
+		vendingMachine2.addItem(item, code);
+	}
+
+	@Test
+	public void testAddItem_6()
+		throws Exception {
+		VendingMachine2 vendingMachine2 = new VendingMachine2();
+		VendingMachineItem2 item = new VendingMachineItem2("",1.0);
+		String code = "D";
+		vendingMachine2.addItem(item, code);
 	}
 
 	/**
@@ -287,6 +319,17 @@ public class VendingMachine2Test {
 
 		// add additional test code here
 		assertTrue(result);
+	}
+
+	@Test
+	public void testMakePurchase_5()
+		throws Exception {
+		VendingMachine2 fixture = new VendingMachine2();
+		String code = "B";
+		fixture.balance = 0.0;
+
+		boolean result = fixture.makePurchase(code);
+		assertFalse(result);
 	}
 
 	/**
