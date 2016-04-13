@@ -7,6 +7,9 @@ public class VendingMachineItem2 {
 
 	// The name of the item
 	private String name;
+	
+	// Exception message for when name is null or spaces
+		private final static String NAME_IS_NULL_MESSAGE = "Name cannot be space or nulls";
 
 	// The price of the item
 	private double price;
@@ -23,7 +26,12 @@ public class VendingMachineItem2 {
 	 * @throws VendingMachineException2 Thrown if price is less than zero
 	 */
 	public VendingMachineItem2( String name, double price ) throws VendingMachineException2 {
+		if( name == "" ){
+			throw new VendingMachineException2(NAME_IS_NULL_MESSAGE);
+			}
+		 else {
 		this.name = name;
+		}
 		if( price < 0 ) {
 			throw new VendingMachineException2(PRICE_LESS_THAN_ZERO_MESSAGE);
 		} else {
