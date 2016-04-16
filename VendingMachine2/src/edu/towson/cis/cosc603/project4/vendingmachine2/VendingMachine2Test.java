@@ -42,7 +42,13 @@ public class VendingMachine2Test {
 		assertEquals(myItemD,myVendingMachineA.getItem("D"));
 	}
 	
-	
+	@Test (expected = VendingMachineException2.class)
+	public void testAddItemExceptionA() {
+		VendingMachine2 myVendingMachineB = new VendingMachine2();
+
+		myVendingMachineB.addItem(myItemB, "A");
+		myVendingMachineB.addItem(myItemB, "A");
+		}
 	
 	@Test (expected = VendingMachineException2.class)
 	public void testAddItemExceptionB() {
@@ -52,17 +58,6 @@ public class VendingMachine2Test {
 		myVendingMachineB.addItem(myItemC, "C");
 		myVendingMachineB.addItem(myItemD, "E");
 		}
-	
-	@Test (expected = VendingMachineException2.class)
-	public void testAddItemExceptionC() {
-		VendingMachine2 myVendingMachineC = new VendingMachine2();
-		myVendingMachineC.addItem(myItemA, "A");
-		myVendingMachineC.addItem(myItemB, "B");
-		myVendingMachineC.addItem(myItemC, "C");
-		myVendingMachineC.addItem(myItemD, "A");
-		}
-	
-	
 	
 	@Test
 	public void testVendingMachine2_1()
@@ -84,9 +79,6 @@ public class VendingMachine2Test {
 	 * @generatedBy CodePro at 4/5/16 11:51 PM
 	 */
 
-	
-	
-	
 	@Test
 	public void testVendingMachine2_2()
 		throws Exception {
@@ -158,7 +150,7 @@ public class VendingMachine2Test {
 
 		// add additional test code here
 	}
-
+		
 	@Test
 	public void testAddItem_4()
 		throws Exception {
@@ -184,8 +176,40 @@ public class VendingMachine2Test {
 		VendingMachineItem2 item = new VendingMachineItem2("Soda",1.0);
 		String code = "D";
 		vendingMachine2.addItem(item, code);
+		}
+			
+	@Test
+	public void testRemomveItem_1()
+		throws Exception {
+	
+		VendingMachine2 vendingMachine3 = new VendingMachine2();
+		vendingMachine3.balance = 2.0;
+		vendingMachine3.addItem(myItemA,"A");
+		vendingMachine3.addItem(myItemA,"B");
+		vendingMachine3.addItem(myItemA,"D");
+		vendingMachine3.removeItem("A");				
+	}
+	
+	@Test(expected = VendingMachineException2.class)
+	public void testRemomveItem_2()
+		throws Exception {
+	
+		VendingMachine2 vendingMachine4 = new VendingMachine2();
+		vendingMachine4.balance = 2.0;
+		vendingMachine4.addItem(myItemA,"A");
+		vendingMachine4.addItem(myItemA,"B");
+		vendingMachine4.addItem(myItemA,"D");
+		vendingMachine4.removeItem("C");				
 	}
 
+	@Test
+	public void testVendingMachine2_3()
+		throws Exception {
+		VendingMachine2 vendingMachine2 = new VendingMachine2();
+	}
+	
+	
+	
 	/**
 	 * Run the double getBalance() method test.
 	 *
@@ -218,10 +242,7 @@ public class VendingMachine2Test {
 		VendingMachine2 fixture = new VendingMachine2();
 		fixture.balance = 1.0;
 		String code = "A";
-
 		VendingMachineItem2 result = fixture.getItem(code);
-
-		// add additional test code here
 		assertEquals(null, result);
 	}
 
@@ -351,7 +372,8 @@ public class VendingMachine2Test {
 	 * @generatedBy CodePro at 4/5/16 11:51 PM
 	 */
 	@Test(expected = edu.towson.cis.cosc603.project4.vendingmachine2.VendingMachineException2.class)
-	public void testMakePurchase_4()
+	public void testMakePurchase
+()
 		throws Exception {
 		VendingMachine2 fixture = new VendingMachine2();
 		fixture.balance = 1.0;
@@ -373,6 +395,26 @@ public class VendingMachine2Test {
 		boolean result = fixture.makePurchase(code);
 		assertFalse(result);
 	}
+	@Test
+	public void testMakePurchase_6()
+		throws Exception {
+		VendingMachine2 fixture = new VendingMachine2();
+		fixture.addItem(myItemA, "A");
+		fixture.balance = 20.0;
+        boolean result = fixture.makePurchase("A");
+        assertTrue(result);
+	}
+	
+	@Test
+	public void testMakePurchase_7()
+		throws Exception {
+		VendingMachine2 fixture = new VendingMachine2();
+		fixture.addItem(myItemA, "B");
+		fixture.balance = 1.50;
+        boolean result = fixture.makePurchase("B");
+        assertTrue(result);
+	}
+	
 
 	/**
 	 * Run the VendingMachineItem2 removeItem(String) method test.
@@ -464,8 +506,11 @@ public class VendingMachine2Test {
 	@Before
 	public void setUp()
 		throws Exception {
-		// add additional set up code here
-	}
+		myItemA = new VendingMachineItem2("coke", 1.50);
+		myItemB = new VendingMachineItem2("pepsi", 1.50);
+		myItemC = new VendingMachineItem2("tab", 1.50);
+		myItemD = new VendingMachineItem2("dew", 1.50);
+		}
 
 	/**
 	 * Perform post-test clean-up.
